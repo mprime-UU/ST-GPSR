@@ -14,5 +14,6 @@ dependencies:
   - pip
   - h5py
   - pandas
+  - torch
   - pip:
     - smcpy
