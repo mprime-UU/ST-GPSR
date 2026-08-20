@@ -11,7 +11,19 @@ from ...chromosomes.crossover import Crossover
 
 class AGraphCrossoverMD(Crossover):
     """Crossover between acyclic graph individuals
+
+    Attributes
+    ----------
+    types : iterable of str
+        an iterable of the possible crossover types
+    last_crossover_types : tuple(str, str)
+        the crossover type (or None) that happened to create the first child
+        and second child, respectively
     """
+
+    def __init__(self):
+        self.types = ["default"]
+        self.last_crossover_types = (None, None)
 
     def __call__(self, parent_1, parent_2):
         """Single point crossover.
@@ -54,4 +66,6 @@ class AGraphCrossoverMD(Crossover):
         child_1.genetic_age = child_age
         child_2.genetic_age = child_age
 
+        self.last_crossover_types = ("default", "default")
+        
         return child_1, child_2
